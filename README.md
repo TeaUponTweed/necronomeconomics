@@ -1,0 +1,1 @@
+Attempt to recreate the results in https://arxiv.org/abs/cond-mat/0001432 with the intension that this could eventually be an interesting game mechanic.
