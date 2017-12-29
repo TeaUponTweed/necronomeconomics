@@ -1,6 +1,7 @@
 import random
 
 import numpy as np
+from scipy import stats
 import matplotlib.pyplot as plt
 
 
@@ -12,6 +13,7 @@ class Agent(object):
 def main():
     initial_money = 10000
     nagents = 10000
+    pdf = stats.expon(initial_money/nagents).pdf
     economy = [Agent(initial_money) for _ in range(nagents)]
     nsteps = 0
     while True:
@@ -24,9 +26,11 @@ def main():
                 loser.money -= delta
 
         if nsteps % 10 == 0:
-            x = np.arange(nagents)
+            # x = np.linspace(0, 1, 10000)
+            x = np.arange(10000)
             y = sorted([a.money for a in economy], reverse=True)
             plt.plot(x, y)
+            # plt.plot(x, pdf(x)*initial_money*nagents)
             plt.show()
 
 
